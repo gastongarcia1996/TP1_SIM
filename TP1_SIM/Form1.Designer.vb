@@ -1,9 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
-    Private IOArchivo As New IOArchivo
-    Private datosArchivoJI() As String
-    Private datosArchivoKS() As String
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -43,6 +40,7 @@ Partial Class Form1
         Me.rb_mixto = New System.Windows.Forms.RadioButton()
         Me.rb_multiplicativo = New System.Windows.Forms.RadioButton()
         Me.btn_tablas = New System.Windows.Forms.Button()
+        Me.rb_lenguaje = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
         '
         'btn_next
@@ -216,11 +214,23 @@ Partial Class Form1
         Me.btn_tablas.Text = "Tablas"
         Me.btn_tablas.UseVisualStyleBackColor = True
         '
+        'rb_lenguaje
+        '
+        Me.rb_lenguaje.AutoSize = True
+        Me.rb_lenguaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rb_lenguaje.Location = New System.Drawing.Point(319, 140)
+        Me.rb_lenguaje.Name = "rb_lenguaje"
+        Me.rb_lenguaje.Size = New System.Drawing.Size(90, 20)
+        Me.rb_lenguaje.TabIndex = 23
+        Me.rb_lenguaje.Text = "Lenguaje"
+        Me.rb_lenguaje.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(489, 613)
+        Me.Controls.Add(Me.rb_lenguaje)
         Me.Controls.Add(Me.btn_tablas)
         Me.Controls.Add(Me.rb_multiplicativo)
         Me.Controls.Add(Me.rb_mixto)
@@ -264,4 +274,5 @@ Partial Class Form1
     Friend WithEvents rb_mixto As RadioButton
     Friend WithEvents rb_multiplicativo As RadioButton
     Friend WithEvents btn_tablas As Button
+    Friend WithEvents rb_lenguaje As RadioButton
 End Class

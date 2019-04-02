@@ -12,9 +12,23 @@
     Private acumuladorMixto As Double = 0.0
     Private conti(10) As Integer
     Private conti2(10) As Integer
+    Private IOArchivo As New IOArchivo
+    Public datosArchivoJI() As String
+    Public datosArchivoKS() As String
 
     Dim grafico As New Grafico
-    Dim tabla As New Tabla
+    Public tabla As New Tabla
+    Dim seleccionTabla As New SeleccionTabla(Me)
+
+    Public Sub New()
+        Me.datosArchivoJI = Me.IOArchivo.LeerArchivo("C:\Users\gasto\source\repos\TP1_SIM\tablaJI.txt")
+        Me.datosArchivoKS = Me.IOArchivo.LeerArchivo("C:\Users\gasto\source\repos\TP1_SIM\tablaKS.txt")
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+    End Sub
 
     Private Sub btn_comenzar_Click(sender As Object, e As EventArgs) Handles btn_comenzar.Click
         Dim cont As Integer = 0
@@ -26,7 +40,7 @@
             Me.flag = False
         End If
 
-
+        'Aleatorios del congruencial mixto
         If Me.rb_mixto.Checked = True Then
             While cont < Integer.Parse(Me.txt_cantNum.Text)
                 GenerarAleatoriosMixto()
@@ -65,6 +79,7 @@
 
         cont = 0
 
+        'Aleatorios del congruencial multiplicativo
         If Me.rb_multiplicativo.Checked = True Then
             While cont < Integer.Parse(Me.txt_cantNum.Text)
                 GenerarAleatoriosMultiplicativo()
@@ -99,6 +114,16 @@
             Me.cantNum += cont
         End If
 
+        'Aleatorios del Lenguaje
+        If Me.rb_lenguaje.Checked = True Then
+            Dim random As New Random()
+            While cont < Integer.Parse(Me.txt_cantNum.Text)
+                Me.aleatorio = random.Next(1, 9999) / 10000
+                Me.ListBox1.Items.Add(Me.aleatorio)
+
+                cont += 1
+            End While
+        End If
         Me.ListBox1.TopIndex = ListBox1.Items.Count - 1
     End Sub
     'Genera el numero aleatorio mixto
@@ -281,12 +306,18 @@
 
     End Sub
 
-    Private Sub CompletarTabla()
+    Public Sub CompletarTabla(ByVal flag As Boolean)
         Dim ji_cuadrado As Double = 0.0
+        Dim ks As Double = 0.0
         Dim aux As Double = 0.0
+        Dim acumuladorFrecuencias As Double = 0.0
+        Dim frao As Double = 0.0
+        Dim frae As Double = 0.0
+        Dim maxKs As Double = 0.0
+        Dim indiceMaxKs As Integer = 0
 
-
-        If Me.rb_mixto.Checked = True Then
+        'Si es Ji cuadrado
+        If flag = True Then
             For i As Double = 0.1 To 1 Step 0.1
                 Me.tabla.DataGridView1.Rows(i * 10 - 1).Cells(0).Value = i
             Next
@@ -295,26 +326,50 @@
                 Me.tabla.DataGridView1.Rows(i).Cells(2).Value = 0.1
             Next
 
-            For i As Integer = 0 To 9
-                Me.tabla.DataGridView1.Rows(i).Cells(1).Value = Me.conti(i) & "/" & Me.cantNum
-            Next
-
-            If cantNum <> 0 Then
+            If Me.rb_mixto.Checked = True Then
                 For i As Integer = 0 To 9
-                    aux = Math.Truncate((Math.Pow((Me.conti(i) / Me.cantNum) - 0.1, 2) / 0.1) * 100000) / 100000
-                    Me.tabla.DataGridView1.Rows(i).Cells(3).Value = aux
-                    ji_cuadrado += aux
+                    Me.tabla.DataGridView1.Rows(i).Cells(1).Value = Me.conti(i) & "/" & Me.cantNum
                 Next
 
+                If cantNum <> 0 Then
+                    For i As Integer = 0 To 9
+                        aux = Math.Truncate((Math.Pow((Me.conti(i) / Me.cantNum) - 0.1, 2) / 0.1) * 100000) / 100000
+                        Me.tabla.DataGridView1.Rows(i).Cells(3).Value = aux
+                        ji_cuadrado += aux
+                    Next
+
+                Else
+                    For i As Integer = 0 To 9
+                        Me.tabla.DataGridView1.Rows(i).Cells(3).Value = 0
+                    Next
+                End If
             Else
                 For i As Integer = 0 To 9
-                    Me.tabla.DataGridView1.Rows(i).Cells(3).Value = 0
+                    Me.tabla.DataGridView1.Rows(i).Cells(1).Value = Me.conti2(i) & "/" & Me.cantNum
                 Next
+
+                If cantNum <> 0 Then
+                    For i As Integer = 0 To 9
+                        aux = Math.Truncate((Math.Pow((Me.conti2(i) / Me.cantNum) - 0.1, 2) / 0.1) * 100000) / 100000
+                        Me.tabla.DataGridView1.Rows(i).Cells(3).Value = aux
+                        ji_cuadrado += aux
+                    Next
+
+                Else
+                    For i As Integer = 0 To 9
+                        Me.tabla.DataGridView1.Rows(i).Cells(3).Value = 0
+                    Next
+                End If
             End If
+
+
+
 
             Me.tabla.DataGridView1.Rows(10).Cells(3).Value = ji_cuadrado
 
         Else
+            'Si es KS
+
             For i As Double = 0.1 To 1 Step 0.1
                 Me.tabla.DataGridView1.Rows(i * 10 - 1).Cells(0).Value = i
             Next
@@ -323,24 +378,64 @@
                 Me.tabla.DataGridView1.Rows(i).Cells(2).Value = 0.1
             Next
 
-            For i As Integer = 0 To 9
-                Me.tabla.DataGridView1.Rows(i).Cells(1).Value = Me.conti2(i) & "/" & Me.cantNum
-            Next
-
-            If cantNum <> 0 Then
+            If Me.rb_mixto.Checked = True Then
                 For i As Integer = 0 To 9
-                    aux = Math.Truncate((Math.Pow((Me.conti2(i) / Me.cantNum) - 0.1, 2) / 0.1) * 100000) / 100000
-                    Me.tabla.DataGridView1.Rows(i).Cells(3).Value = aux
-                    ji_cuadrado += aux
+                    Me.tabla.DataGridView1.Rows(i).Cells(1).Value = Me.conti(i) & "/" & Me.cantNum
                 Next
 
+                If cantNum <> 0 Then
+
+                    For i As Integer = 0 To 9
+                        acumuladorFrecuencias += Me.conti(i) / Me.cantNum
+                        Me.tabla.DataGridView1.Rows(i).Cells(4).Value = acumuladorFrecuencias
+                    Next
+
+                Else
+                    For i As Integer = 0 To 9
+                        Me.tabla.DataGridView1.Rows(i).Cells(4).Value = 0
+                    Next
+                End If
             Else
                 For i As Integer = 0 To 9
-                    Me.tabla.DataGridView1.Rows(i).Cells(3).Value = 0
+                    Me.tabla.DataGridView1.Rows(i).Cells(1).Value = Me.conti2(i) & "/" & Me.cantNum
                 Next
+
+                If cantNum <> 0 Then
+
+                    For i As Integer = 0 To 9
+                        acumuladorFrecuencias += Me.conti2(i) / Me.cantNum
+                        Me.tabla.DataGridView1.Rows(i).Cells(4).Value = acumuladorFrecuencias
+                    Next
+
+                Else
+                    For i As Integer = 0 To 9
+                        Me.tabla.DataGridView1.Rows(i).Cells(4).Value = 0
+                    Next
+                End If
             End If
 
-            Me.tabla.DataGridView1.Rows(10).Cells(3).Value = ji_cuadrado
+            acumuladorFrecuencias = 0.0
+            For j As Integer = 0 To 9
+
+                acumuladorFrecuencias += Double.Parse(Me.tabla.DataGridView1.Rows(j).Cells(2).Value)
+                Me.tabla.DataGridView1.Rows(j).Cells(5).Value = acumuladorFrecuencias
+            Next
+
+            For k As Integer = 0 To 9
+
+                frao = Double.Parse(Me.tabla.DataGridView1.Rows(k).Cells(4).Value)
+                frae = Double.Parse(Me.tabla.DataGridView1.Rows(k).Cells(5).Value)
+                maxKs = Math.Abs(frao - frae)
+
+                If ks < maxKs Then
+                    ks = maxKs
+                    indiceMaxKs = k
+                End If
+
+                Me.tabla.DataGridView1.Rows(k).Cells(6).Value = Math.Abs(maxKs)
+            Next
+
+            Me.tabla.DataGridView1.Rows(10).Cells(6).Value = ks
         End If
 
 
@@ -352,10 +447,12 @@
         End If
     End Sub
 
-    Private Sub rb_multiplicativo_CheckedChanged(sender As Object, e As EventArgs) Handles rb_multiplicativo.CheckedChanged
+    Private Sub rb_multiplicativo_CheckedChanged(sender As Object, e As EventArgs) Handles rb_multiplicativo.CheckedChanged, rb_lenguaje.CheckedChanged
         Me.ListBox1.Items.Clear()
+        Me.tabla.DataGridView1.Rows(10).Cells(3).Style.BackColor = Color.White
         For i As Integer = 0 To 9
             conti(i) = 0
+            conti2(i) = 0
         Next
 
         Me.acumuladorMixto = 0.0
@@ -370,18 +467,6 @@
     End Sub
 
     Private Sub btn_tablas_Click(sender As Object, e As EventArgs) Handles btn_tablas.Click
-        If Me.rb_mixto.Checked = True Then
-            Me.tabla.DataGridView1.Columns(1).Name = "Frecuencia Mixto"
-            Me.tabla.DataGridView1.Columns(1).HeaderText = "Frecuencia Mixto"
-            CompletarTabla()
-
-        Else
-            Me.tabla.DataGridView1.Columns(1).Name = "Frecuencia Multiplicativo"
-            Me.tabla.DataGridView1.Columns(1).HeaderText = "Frecuencia Multiplicativo"
-
-            CompletarTabla()
-        End If
-
-        Me.tabla.Show()
+        seleccionTabla.Show()
     End Sub
 End Class

@@ -12,3 +12,4 @@ c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.xml
 c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.pdb
 C:\Users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.Grafico.resources
 C:\Users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.Tabla.resources
+C:\Users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.SeleccionTabla.resources
