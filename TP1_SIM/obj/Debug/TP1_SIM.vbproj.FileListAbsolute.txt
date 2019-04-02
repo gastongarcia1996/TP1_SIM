@@ -1,0 +1,14 @@
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\bin\Debug\TP1_SIM.exe.config
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\bin\Debug\TP1_SIM.exe
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\bin\Debug\TP1_SIM.pdb
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\bin\Debug\TP1_SIM.xml
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.vbprojAssemblyReference.cache
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.Form1.resources
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.Resources.resources
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.vbproj.GenerateResource.cache
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.vbproj.CoreCompileInputs.cache
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.exe
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.xml
+c:\users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.pdb
+C:\Users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.Grafico.resources
+C:\Users\gasto\source\repos\TP1_SIM\TP1_SIM\obj\Debug\TP1_SIM.Tabla.resources
