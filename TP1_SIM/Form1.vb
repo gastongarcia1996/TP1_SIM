@@ -15,6 +15,7 @@
     Private conti2(10) As Integer
     Private contLenguaje(10)
     Private IOArchivo As New IOArchivo
+    Private numIntervalos As Integer
     Public datosArchivoJI() As String
     Public datosArchivoKS() As String
 
@@ -151,7 +152,7 @@
             End While
         End If
         Me.cantNum += cont
-
+        Me.numIntervalos = Integer.Parse(Me.txt_numIntervalos.Text)
         Me.ListBox1.TopIndex = ListBox1.Items.Count - 1
     End Sub
     'Genera el numero aleatorio mixto
@@ -298,6 +299,7 @@
 
         End If
         Me.cantNum += 1
+        Me.numIntervalos = Integer.Parse(Me.txt_numIntervalos.Text)
         Me.ListBox1.TopIndex = ListBox1.Items.Count - 1
     End Sub
 

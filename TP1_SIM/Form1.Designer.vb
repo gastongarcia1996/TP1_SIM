@@ -41,6 +41,8 @@ Partial Class Form1
         Me.rb_multiplicativo = New System.Windows.Forms.RadioButton()
         Me.btn_tablas = New System.Windows.Forms.Button()
         Me.rb_lenguaje = New System.Windows.Forms.RadioButton()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txt_numIntervalos = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'btn_next
@@ -120,9 +122,9 @@ Partial Class Form1
         Me.ListBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 16
-        Me.ListBox1.Location = New System.Drawing.Point(12, 206)
+        Me.ListBox1.Location = New System.Drawing.Point(12, 261)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(465, 292)
+        Me.ListBox1.Size = New System.Drawing.Size(465, 276)
         Me.ListBox1.TabIndex = 8
         '
         'lbl_x
@@ -157,7 +159,7 @@ Partial Class Form1
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(9, 187)
+        Me.Label2.Location = New System.Drawing.Point(9, 242)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(53, 16)
         Me.Label2.TabIndex = 16
@@ -225,11 +227,31 @@ Partial Class Form1
         Me.rb_lenguaje.Text = "Lenguaje"
         Me.rb_lenguaje.UseVisualStyleBackColor = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(14, 197)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(115, 16)
+        Me.Label3.TabIndex = 26
+        Me.Label3.Text = "Num intervalos:"
+        '
+        'txt_numIntervalos
+        '
+        Me.txt_numIntervalos.Location = New System.Drawing.Point(129, 196)
+        Me.txt_numIntervalos.Name = "txt_numIntervalos"
+        Me.txt_numIntervalos.Size = New System.Drawing.Size(24, 20)
+        Me.txt_numIntervalos.TabIndex = 27
+        Me.txt_numIntervalos.Text = "3"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(489, 613)
+        Me.Controls.Add(Me.txt_numIntervalos)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.rb_lenguaje)
         Me.Controls.Add(Me.btn_tablas)
         Me.Controls.Add(Me.rb_multiplicativo)
@@ -275,4 +297,6 @@ Partial Class Form1
     Friend WithEvents rb_multiplicativo As RadioButton
     Friend WithEvents btn_tablas As Button
     Friend WithEvents rb_lenguaje As RadioButton
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txt_numIntervalos As TextBox
 End Class
