@@ -303,10 +303,16 @@
         Me.ListBox1.TopIndex = ListBox1.Items.Count - 1
     End Sub
 
+    'Evento que se activa cuando el texto del textBox cambia
     Private Sub txt_TextChanged(sender As Object, e As EventArgs) Handles txt_a.TextChanged, txt_c.TextChanged, txt_x.TextChanged, txt_m.TextChanged, txt_cantNum.TextChanged
         Me.flag = True
+
+        If Me.ListBox1.Items.Count > 0 Then
+            Me.ListBox1.Items.Clear()
+        End If
     End Sub
 
+    'sub rutina que se activa al hacer click en el boton grafico, grafica solo mixto y lenguaje
     Private Sub btn_grafico_Click(sender As Object, e As EventArgs) Handles btn_grafico.Click
 
         If rb_multiplicativo.Checked = True Then
@@ -347,7 +353,7 @@
         'Si es congruencial mixto
         If Me.rb_mixto.Checked = True Then
 
-            Me.grafico.Chart1.Series(0).Points.Clear() 'Limpia el grafico (serie 1)
+            Me.grafico.Chart1.Series(0).Points.Clear() 'Limpia el grafico serie 1 (azul)
 
 
             'Completa el grafico congruencial mixto   
@@ -364,7 +370,7 @@
             'Si es del lenguaje
         ElseIf Me.rb_lenguaje.Checked = True Then
 
-            Me.grafico.Chart1.Series(0).Points.Clear() 'Limpia el grafico (serie 2)
+            Me.grafico.Chart1.Series(0).Points.Clear() 'Limpia el grafico serie 2 (amarillo)
 
 
             'Completa el grafico para los aleatorios generados por el lenaguaje
@@ -394,7 +400,9 @@
 
     End Sub
 
+    'Realiza el trabajo de completar la tabla, llenando las filas correspondientes
     Public Sub CompletarTabla(ByVal flag As Boolean)
+        'Variables auxiliares para calcular chi-cuadrado y ks (vease las formulas de chi-cuadrado y ks)
         Dim ji_cuadrado As Double = 0.0
         Dim ks As Double = 0.0
         Dim aux As Double = 0.0
@@ -459,6 +467,7 @@
                 Next
 
                 If cantNum <> 0 Then
+                    'Calculo de chi-cuadrado
                     For i As Integer = 0 To 9
                         aux = Math.Truncate((Math.Pow((Me.contLenguaje(i) / Me.cantNum) - 0.1, 2) / 0.1) * 100000) / 100000
                         Me.tabla.DataGridView1.Rows(i).Cells(3).Value = aux
@@ -569,12 +578,15 @@
 
     End Sub
 
+    'Es un evento que se activa cuando se presiona una tecla para escribir en cualquier textBox
     Private Sub txt_a_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_a.KeyPress, txt_c.KeyPress, txt_m.KeyPress, txt_x.KeyPress, txt_cantNum.KeyPress
+        'Verifico que sean solo numeros en los textBox
         If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
             e.Handled = True
         End If
     End Sub
 
+    'Este metodo lo que hace es habilitar o deshabilitar los txt dependiendo de los radio button
     Private Sub rb_multiplicativo_CheckedChanged(sender As Object, e As EventArgs) Handles rb_multiplicativo.CheckedChanged, rb_lenguaje.CheckedChanged
         Me.ListBox1.Items.Clear()
         Me.tabla.DataGridView1.Rows(10).Cells(3).Style.BackColor = Color.White
