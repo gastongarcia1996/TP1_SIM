@@ -259,9 +259,16 @@
 
             Me.acumuladorMixto += Me.aleatorio
 
-            For i As Integer = 0 To conti.Length
-                If Me.aleatorio < i Then
-                    conti(i) += 1
+            For i As Integer = 0 To conti.Length - 1
+
+                If Me.aleatorio < (1 / conti.Length) * i Then
+                    conti(i - 1) += 1
+                    Exit For
+
+
+                ElseIf Me.aleatorio > (conti.Length - 1) / conti.Length Then
+                    conti(conti.Length - 1) += 1
+                    Exit For
                 End If
             Next
 
@@ -298,28 +305,40 @@
             Me.ListBox1.Items.Add(Me.aleatorio)
             Me.ListBox1.TopIndex = ListBox1.Items.Count - 1
 
-            Select Case Me.aleatorio
-                Case 0 To 0.1
-                    Me.conti2(0) += 1
-                Case 0.1 To 0.2
-                    Me.conti2(1) += 1
-                Case 0.2 To 0.3
-                    Me.conti2(2) += 1
-                Case 0.3 To 0.4
-                    Me.conti2(3) += 1
-                Case 0.4 To 0.5
-                    Me.conti2(4) += 1
-                Case 0.5 To 0.6
-                    Me.conti2(5) += 1
-                Case 0.6 To 0.7
-                    Me.conti2(6) += 1
-                Case 0.7 To 0.8
-                    Me.conti2(7) += 1
-                Case 0.8 To 0.9
-                    Me.conti2(8) += 1
-                Case 0.9 To 1
-                    Me.conti2(9) += 1
-            End Select
+            For i As Integer = 0 To conti2.Length - 1
+
+                If Me.aleatorio < (1 / conti2.Length) * i Then
+                    conti2(i - 1) += 1
+                    Exit For
+
+
+                ElseIf Me.aleatorio > (conti2.Length - 1) / conti2.Length Then
+                    conti2(conti2.Length - 1) += 1
+                    Exit For
+                End If
+            Next
+            'Select Case Me.aleatorio
+            '    Case 0 To 0.1
+            '        Me.conti2(0) += 1
+            '    Case 0.1 To 0.2
+            '        Me.conti2(1) += 1
+            '    Case 0.2 To 0.3
+            '        Me.conti2(2) += 1
+            '    Case 0.3 To 0.4
+            '        Me.conti2(3) += 1
+            '    Case 0.4 To 0.5
+            '        Me.conti2(4) += 1
+            '    Case 0.5 To 0.6
+            '        Me.conti2(5) += 1
+            '    Case 0.6 To 0.7
+            '        Me.conti2(6) += 1
+            '    Case 0.7 To 0.8
+            '        Me.conti2(7) += 1
+            '    Case 0.8 To 0.9
+            '        Me.conti2(8) += 1
+            '    Case 0.9 To 1
+            '        Me.conti2(9) += 1
+            'End Select
         End If
 
         If Me.rb_lenguaje.Checked = True Then
@@ -328,28 +347,42 @@
             Me.ListBox1.Items.Add(Me.aleatorio)
             acumuladorLenguaje += Me.aleatorio
 
-            Select Case Me.aleatorio
-                Case 0 To 0.1
-                    Me.contLenguaje(0) += 1
-                Case 0.1 To 0.2
-                    Me.contLenguaje(1) += 1
-                Case 0.2 To 0.3
-                    Me.contLenguaje(2) += 1
-                Case 0.3 To 0.4
-                    Me.contLenguaje(3) += 1
-                Case 0.4 To 0.5
-                    Me.contLenguaje(4) += 1
-                Case 0.5 To 0.6
-                    Me.contLenguaje(5) += 1
-                Case 0.6 To 0.7
-                    Me.contLenguaje(6) += 1
-                Case 0.7 To 0.8
-                    Me.contLenguaje(7) += 1
-                Case 0.8 To 0.9
-                    Me.contLenguaje(8) += 1
-                Case 0.9 To 1
-                    Me.contLenguaje(9) += 1
-            End Select
+
+            For i As Integer = 0 To contLenguaje.Length - 1
+
+                If Me.aleatorio < (1 / contLenguaje.Length) * i Then
+                    contLenguaje(i - 1) += 1
+                    Exit For
+
+
+                ElseIf Me.aleatorio > (contLenguaje.Length - 1) / contLenguaje.Length Then
+                    contLenguaje(contLenguaje.Length - 1) += 1
+                    Exit For
+                End If
+            Next
+
+            'Select Case Me.aleatorio
+            '    Case 0 To 0.1
+            '        Me.contLenguaje(0) += 1
+            '    Case 0.1 To 0.2
+            '        Me.contLenguaje(1) += 1
+            '    Case 0.2 To 0.3
+            '        Me.contLenguaje(2) += 1
+            '    Case 0.3 To 0.4
+            '        Me.contLenguaje(3) += 1
+            '    Case 0.4 To 0.5
+            '        Me.contLenguaje(4) += 1
+            '    Case 0.5 To 0.6
+            '        Me.contLenguaje(5) += 1
+            '    Case 0.6 To 0.7
+            '        Me.contLenguaje(6) += 1
+            '    Case 0.7 To 0.8
+            '        Me.contLenguaje(7) += 1
+            '    Case 0.8 To 0.9
+            '        Me.contLenguaje(8) += 1
+            '    Case 0.9 To 1
+            '        Me.contLenguaje(9) += 1
+            'End Select
 
         End If
         Me.cantNum += 1
@@ -363,6 +396,7 @@
 
         If Me.ListBox1.Items.Count > 0 Then
             Me.ListBox1.Items.Clear()
+            Me.tabla.DataGridView1.Rows.Clear()
         End If
     End Sub
 
