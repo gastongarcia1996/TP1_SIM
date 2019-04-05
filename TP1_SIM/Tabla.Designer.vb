@@ -84,17 +84,6 @@ Partial Class Tabla
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
-        Me.DataGridView1.Rows.Add()
         StartPosition = FormStartPosition.CenterScreen
     End Sub
 

@@ -243,7 +243,7 @@ Partial Class Form1
         Me.txt_numIntervalos.Name = "txt_numIntervalos"
         Me.txt_numIntervalos.Size = New System.Drawing.Size(24, 20)
         Me.txt_numIntervalos.TabIndex = 27
-        Me.txt_numIntervalos.Text = "3"
+        Me.txt_numIntervalos.Text = "10"
         '
         'Form1
         '

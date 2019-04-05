@@ -82,19 +82,19 @@
         End If
 
         If Me.rb_jiCuadrado.Checked = True Then
-            stringAux = form1.tabla.DataGridView1.Rows(10).Cells(3).Value
+            stringAux = form1.tabla.DataGridView1.Rows(form1.GetConti().Length).Cells(3).Value
             If stringAux.CompareTo("0") <> 0 Then
 
-                If form1.datosArchivoJI.Contains("9") Then
-                    If Double.Parse(stringAux) < Double.Parse(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoJI, "9") + 1), Globalization.NumberStyles.AllowDecimalPoint) Then
+                If form1.datosArchivoJI.Contains(form1.GetConti().Length.ToString()) Then
+                    If Double.Parse(stringAux) < Double.Parse(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoJI, (form1.GetConti().Length - 1).ToString()) + 1), Globalization.NumberStyles.AllowDecimalPoint) Then
 
-                        MessageBox.Show("Para 9 grados de libertad y confianza %95, el valor de KS es: " & Convert.ToDouble(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoKS, "9") + 1)) &
+                        MessageBox.Show("Para " & (form1.GetConti().Length - 1).ToString() & " grados de libertad y confianza %95, el valor de chi-cuadrado es: " & Convert.ToDouble(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoKS, (form1.GetConti().Length - 1).ToString()) + 1)) &
                                         " por lo tanto se acepta la hipotesis", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-                        form1.tabla.DataGridView1.Rows(10).Cells(3).Style.BackColor = Color.Green
+                        form1.tabla.DataGridView1.Rows(form1.GetConti().Length).Cells(3).Style.BackColor = Color.Green
                     Else
-                        MessageBox.Show("Para 9 grados de libertad y confianza %95, el valor de KS es: " & Convert.ToDouble(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoKS, "9") + 1)) &
+                        MessageBox.Show("Para " & (form1.GetConti().Length - 1).ToString() & "grados de libertad y confianza %95, el valor de chi-cuadrado es: " & Convert.ToDouble(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoKS, form1.GetConti().Length.ToString()) + 1)) &
                                         " por lo tanto se rechaza la hipotesis", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        form1.tabla.DataGridView1.Rows(10).Cells(3).Style.BackColor = Color.Red
+                        form1.tabla.DataGridView1.Rows(form1.GetConti().Length).Cells(3).Style.BackColor = Color.Red
                     End If
                 End If
 
@@ -102,19 +102,19 @@
             End If
 
         Else
-            stringAux = form1.tabla.DataGridView1.Rows(10).Cells(6).Value
+            stringAux = form1.tabla.DataGridView1.Rows(form1.GetConti().Length).Cells(6).Value
             If stringAux.CompareTo("0") <> 0 Then
 
-                If form1.datosArchivoKS.Contains("10") Then
-                    If Convert.ToDouble(stringAux) < Convert.ToDouble(form1.datosArchivoKS.ElementAt(Array.IndexOf(form1.datosArchivoKS, "10") + 1)) Then
+                If form1.datosArchivoKS.Contains(form1.GetConti().Length.ToString()) Then
+                    If Convert.ToDouble(stringAux) < Convert.ToDouble(form1.datosArchivoKS.ElementAt(Array.IndexOf(form1.datosArchivoKS, form1.GetConti().Length.ToString()) + 1)) Then
 
-                        MessageBox.Show("Para 10 grados de libertad y confianza %95, el valor de KS es: " & Convert.ToDouble(form1.datosArchivoKS.ElementAt(Array.IndexOf(form1.datosArchivoKS, "10") + 1)) &
+                        MessageBox.Show("Para " & form1.GetConti().Length.ToString() & " grados de libertad y confianza %95, el valor de KS es: " & Convert.ToDouble(form1.datosArchivoKS.ElementAt(Array.IndexOf(form1.datosArchivoKS, form1.GetConti().Length.ToString()) + 1)) &
                                         " por lo tanto se acepta la hipotesis", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-                        form1.tabla.DataGridView1.Rows(10).Cells(6).Style.BackColor = Color.Green
+                        form1.tabla.DataGridView1.Rows(form1.GetConti().Length).Cells(6).Style.BackColor = Color.Green
                     Else
-                        MessageBox.Show("Para 9 grados de libertad y confianza %95, el valor de KS es: " & Convert.ToDouble(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoKS, "10") + 1)) &
+                        MessageBox.Show("Para " & form1.GetConti().Length.ToString() & " grados de libertad y confianza %95, el valor de KS es: " & Convert.ToDouble(form1.datosArchivoJI.ElementAt(Array.IndexOf(form1.datosArchivoKS, form1.GetConti().Length.ToString()) + 1)) &
                                         " por lo tanto se rechaza la hipotesis", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        form1.tabla.DataGridView1.Rows(10).Cells(6).Style.BackColor = Color.Red
+                        form1.tabla.DataGridView1.Rows(form1.GetConti().Length).Cells(6).Style.BackColor = Color.Red
                     End If
                 End If
 
